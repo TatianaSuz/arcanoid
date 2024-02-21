@@ -12,8 +12,8 @@ let game = {
     ball: null,
     blocks: [],
     score: 0,
-    rows: 4,
-    cols: 8,
+    rows: 1,
+    cols: 1,
     width: 640,
     height: 360,
     sprites: {
@@ -24,6 +24,8 @@ let game = {
     },
     sounds: {
       bump: null,
+      chapa: null,
+      fail: null,
     },
     init() {
         this.ctx = document.getElementById("myCanvas").getContext("2d");
@@ -101,6 +103,7 @@ let game = {
         ++this.score
 
         if (this.score >= this.blocks.length) {
+            this.sounds.chapa.play()
             game.end("Вы победили! Ура!")
         }
     },
@@ -235,6 +238,7 @@ game.ball = {
             this.dy = this.velocity;
             game.sounds.bump.play()
         } else if (ballBottom > worldBottom) {
+            game.sounds.fail.play()
             game.end("Вы проиграли!");
         }
     },
