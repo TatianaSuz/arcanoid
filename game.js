@@ -24,8 +24,8 @@ let game = {
     },
     sounds: {
       bump: null,
-      win: null,
       fail: null,
+      win: null,
     },
     init() {
         this.ctx = document.getElementById("myCanvas").getContext("2d");
@@ -104,7 +104,9 @@ let game = {
 
         if (this.score >= this.blocks.length) {
             this.sounds.win.play();
-            game.end("Вы победили! Ура!");
+            setTimeout(() => {
+                game.end("Вы победили! Ура!");
+            }, 1000)
         }
     },
     // обработка столкновений мяча с блоком
