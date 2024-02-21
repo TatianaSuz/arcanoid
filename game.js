@@ -24,7 +24,7 @@ let game = {
     },
     sounds: {
       bump: null,
-      chapa: null,
+      win: null,
       fail: null,
     },
     init() {
@@ -100,11 +100,11 @@ let game = {
         this.ball.move();
     },
     addScore() {
-        ++this.score
+        ++this.score;
 
         if (this.score >= this.blocks.length) {
-            this.sounds.chapa.play()
-            game.end("Вы победили! Ура!")
+            this.sounds.win.play();
+            game.end("Вы победили! Ура!");
         }
     },
     // обработка столкновений мяча с блоком
